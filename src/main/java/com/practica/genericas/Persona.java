@@ -24,6 +24,7 @@ public class Persona {
 		this.documento = documento;
 		this.email = email;
 		this.direccion = direccion;
+		this.cp = cp;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

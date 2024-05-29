@@ -94,7 +94,7 @@ public class ContactosCovid {
 		File archivo;
 		FileReader fr = null;
 		BufferedReader br;
-		String datas[] = null, data;
+		String data;
 		try {
 			// Apertura del fichero y creacion de BufferedReader para poder
 			// hacer una lectura comoda (disponer del metodo readLine()).
@@ -105,12 +105,7 @@ public class ContactosCovid {
 				this.poblacion = new Poblacion();
 				this.localizacion = new Localizacion();
 				this.listaContactos = new ListaContactos();
-			} 
-			/**
-			 * Lectura del fichero	línea a línea. Compruebo que cada línea 
-			 * tiene el tipo PERSONA o LOCALIZACION y cargo la línea de datos en la 
-			 * lista correspondiente. Sino viene ninguno de esos tipos lanzo una excepción
-			 */
+			}
 			while ((data = br.readLine()) != null) {
 				loadData(data,false);
 			}
