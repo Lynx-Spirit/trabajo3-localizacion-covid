@@ -1,11 +1,13 @@
 package com.practica.genericas;
 
 
+import com.practica.excecption.EmsInvalidNumberOfDataException;
+
 public class Persona {
 	private String nombre, apellidos, documento, email, direccion, cp;
 	FechaHora fechaNacimiento;
 
-	public static int MAX_DATOS_PERSONA = 8;
+	private static int MAX_DATOS_PERSONA = 8;
 
 	public Persona() {
 
@@ -84,13 +86,13 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public static Persona crearPersona(String[] data) {
+	public static Persona crearPersona(String[] data) throws EmsInvalidNumberOfDataException {
 		if(data.length == MAX_DATOS_PERSONA) {
 			FechaHora fechaAux = FechaHora.parsearFecha(data[7]);
 			Persona persona = new Persona(data[2],data[3],data[1],data[4],data[5],data[6],fechaAux);
 			return persona;
 		}else {
-			return null;
+			throw new EmsInvalidNumberOfDataException("El número de datos para PERSONA es menor de 8");
 		}
 	}
 
