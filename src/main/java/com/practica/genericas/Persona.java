@@ -5,12 +5,19 @@ public class Persona {
 	private String nombre, apellidos, documento, email, direccion, cp;
 	FechaHora fechaNacimiento;
 
+	public static int MAX_DATOS_PERSONA = 8;
+
 	public Persona() {
 
 	}
 
 	public Persona(String nombre, String apellidos, String documento, String email, String direccion,
 			FechaHora fechaNacimiento) {
+		this(nombre,apellidos,documento,email,direccion,"",fechaNacimiento);
+	}
+
+	public Persona(String nombre, String apellidos, String documento, String email, String direccion,
+				   String cp, FechaHora fechaNacimiento) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -74,6 +81,16 @@ public class Persona {
 
 	public void setFechaNacimiento(FechaHora fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public static Persona crearPersona(String[] data) {
+		if(data.length == MAX_DATOS_PERSONA) {
+			FechaHora fechaAux = FechaHora.parsearFecha(data[7]);
+			Persona persona = new Persona(data[2],data[3],data[1],data[4],data[5],data[6],fechaAux);
+			return persona;
+		}else {
+			return null;
+		}
 	}
 
 	@Override
